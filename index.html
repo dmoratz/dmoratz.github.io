@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donald Moratz</title>
+<meta name="description" content="Donald Moratz — Ph.D. Candidate in Political Science at the University of Pennsylvania. International relations, political methodology, and computational text analysis.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #f5f0e6;
+    --bg-soft: #ebe4d4;
+    --ink: #1c1a17;
+    --accent: #8b3a2f;
+    --muted: #756857;
+    --rule: #d4c8b5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 14, "SOFT" 50;
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 5rem 2rem 3rem;
+  }
+
+  /* ─────── Hero ─────── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  @media (max-width: 720px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .hero-photo {
+      order: -1;
+      width: 140px;
+      height: 170px;
+      justify-self: start;
+    }
+  }
+
+  .hero-photo {
+    width: 200px;
+    height: 240px;
+    object-fit: cover;
+    border: 1px solid var(--rule);
+    background: var(--bg-soft);
+    filter: grayscale(0.1);
+    box-shadow: 0 1px 0 var(--rule);
+  }
+
+  .name {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 400;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+
+  .tagline {
+    font-size: 1.0625rem;
+    color: var(--muted);
+    font-style: italic;
+    font-variation-settings: "opsz" 14;
+    max-width: 50ch;
+  }
+
+  .meta {
+    margin-top: 1.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.75rem;
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+
+  .meta a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .meta a:hover { border-color: var(--accent); }
+
+  /* ─────── Section layout ─────── */
+  section {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 2.5rem;
+    margin-bottom: 4.5rem;
+  }
+
+  @media (max-width: 720px) {
+    section { grid-template-columns: 1fr; gap: 1rem; }
+    .container { padding: 3rem 1.5rem 2rem; }
+  }
+
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    font-weight: 500;
+    padding-top: 0.6rem;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .subsection-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    font-weight: 500;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .subsection-label:first-child { margin-top: 0; }
+
+  /* ─────── About ─────── */
+  .about p {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+  .about p:last-child { margin-bottom: 0; }
+  .about em { color: var(--ink); }
+
+  /* ─────── Research interests ─────── */
+  .interests { list-style: none; }
+
+  .interests li {
+    padding: 1rem 0;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1.25rem;
+    align-items: baseline;
+  }
+  .interests li:last-child { border-bottom: 1px solid var(--rule); }
+
+  .interests .num {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    font-size: 1.4rem;
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .interests .desc { font-size: 1rem; color: var(--muted); line-height: 1.55; }
+  .interests .desc strong {
+    color: var(--ink);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  /* ─────── Publications ─────── */
+  .pub {
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .pub:last-child { border-bottom: 1px solid var(--rule); }
+
+  .pub-title {
+    font-size: 1.03rem;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    line-height: 1.45;
+  }
+
+  .pub-authors {
+    color: var(--muted);
+    font-size: 0.9375rem;
+    margin-bottom: 0.2rem;
+    line-height: 1.5;
+  }
+
+  .pub-authors .me {
+    color: var(--ink);
+    border-bottom: 1px dotted var(--accent);
+  }
+
+  .pub-venue {
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .pub-jmp {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 0.15rem 0.5rem;
+    margin-left: 0.5rem;
+    vertical-align: 2px;
+    border-radius: 2px;
+  }
+
+  .pub-links {
+    margin-top: 0.55rem;
+    font-size: 0.78rem;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .pub-links a {
+    color: var(--accent);
+    text-decoration: none;
+    margin-right: 1.25rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1px;
+    transition: border-color 0.2s;
+  }
+  .pub-links a:hover { border-color: var(--accent); }
+
+  /* ─────── Teaching ─────── */
+  .teaching ul { list-style: none; }
+
+  .teaching li {
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    gap: 1.5rem;
+    font-size: 0.9875rem;
+    align-items: baseline;
+  }
+  .teaching li:last-child { border-bottom: 1px solid var(--rule); }
+
+  @media (max-width: 600px) {
+    .teaching li { grid-template-columns: 1fr; gap: 0.2rem; padding: 0.85rem 0; }
+  }
+
+  .teaching .term {
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .teaching .role {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ─────── Contact ─────── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  .contact-item .label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .contact-item .value { font-size: 1rem; line-height: 1.5; }
+
+  .contact-item a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: border-color 0.2s;
+  }
+  .contact-item a:hover { border-color: var(--accent); }
+
+  /* ─────── Footer ─────── */
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.8125rem;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ─────── Entrance animation ─────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero, section, footer {
+    animation: fadeUp 0.7s ease-out backwards;
+  }
+  .hero { animation-delay: 0.05s; }
+  section:nth-of-type(1) { animation-delay: 0.15s; }
+  section:nth-of-type(2) { animation-delay: 0.20s; }
+  section:nth-of-type(3) { animation-delay: 0.25s; }
+  section:nth-of-type(4) { animation-delay: 0.30s; }
+  section:nth-of-type(5) { animation-delay: 0.35s; }
+  footer { animation-delay: 0.40s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero, section, footer { animation: none; }
+  }
+</style>
+</head>
+<body>
+  <main class="container">
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+         Photo: save as photo.jpg in the same folder as
+         this index.html (i.e. the root of your repo).
+         Recommended: ~600×720 px, JPG, under 500KB.
+         ═══════════════════════════════════════════ -->
+    <header class="hero">
+      <div class="hero-text">
+        <h1 class="name">Donald Moratz</h1>
+        <p class="tagline">Ph.D. Candidate in Political Science at the University of Pennsylvania. International relations, political methodology, and the computational analysis of media. On the academic job market, 2026–2027.</p>
+        <nav class="meta">
+          <a href="mailto:dmoratz@sas.upenn.edu">dmoratz@sas.upenn.edu</a>
+          <a href="cv.pdf">Curriculum Vitae →</a>
+          <a href="https://github.com/dmoratz">GitHub</a>
+          <a href="https://www.linkedin.com/in/dmoratz/">LinkedIn</a>
+          <!-- Add your Google Scholar URL here when you have one set up: -->
+          <!-- <a href="https://scholar.google.com/citations?user=YOUR_ID">Google Scholar</a> -->
+        </nav>
+      </div>
+      <img class="hero-photo" src="photo.jpg" alt="Donald Moratz">
+    </header>
+
+    <!-- ═══════════════════════════════════════════
+         ABOUT
+         ═══════════════════════════════════════════ -->
+    <section>
+      <span class="section-label">About</span>
+      <div>
+        <h2 class="sr-only">About</h2>
+        <div class="about">
+          <p>I am a Ph.D. Candidate in Political Science at the University of Pennsylvania, where I am also completing a dual M.A. in Statistics. My research sits at the intersection of international relations and political methodology: I use computational text analysis and machine learning to study how authoritarian governments project influence, how media frame political conflict, and how to measure civic space in developing democracies.</p>
+          <p>Before Penn, I earned an M.A. in Economics and Political Science from Duke University and an M.A. in Economics and International Relations from the University of St Andrews. From 2020 to 2022 I worked on the Machine Learning for Peace project at DEVLAB@Duke, ultimately as Research Manager. I currently serve as an editorial assistant at <em>Political Analysis</em>, and my job market paper received the Penn Grad Talks Social Science prize in 2026. I am on the academic job market for 2026–2027.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         RESEARCH
+         ═══════════════════════════════════════════ -->
+    <section>
+      <span class="section-label">Research</span>
+      <div>
+        <h2 class="sr-only">Research</h2>
+        <ul class="interests">
+          <li>
+            <span class="num">i.</span>
+            <span class="desc"><strong>International relations</strong>Authoritarian foreign influence, the politics of news media coverage of conflict, and how states signal during crises.</span>
+          </li>
+          <li>
+            <span class="num">ii.</span>
+            <span class="desc"><strong>Computational text analysis</strong>Building large corpora of domestic news media and applying transformer models to measure political phenomena — particularly civic space in developing democracies.</span>
+          </li>
+          <li>
+            <span class="num">iii.</span>
+            <span class="desc"><strong>Political methodology</strong>New approaches to measurement, decomposition, and forecasting, including a zero-loss decomposition of the 2024 U.S. electorate.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PAPERS
+         The Job Market Paper badge can be moved by
+         relocating <span class="pub-jmp">…</span>.
+         ═══════════════════════════════════════════ -->
+    <section>
+      <span class="section-label">Papers</span>
+      <div>
+        <h2 class="sr-only">Papers</h2>
+
+        <div class="subsection-label">Working Papers</div>
+
+        <article class="pub">
+          <div class="pub-title">Invasion in the News: Sentiment, Media Coverage, and Signalling <span class="pub-jmp">Job Market Paper</span></div>
+          <div class="pub-authors"><span class="me">Donald Moratz</span> &amp; Sarah Gerstein</div>
+          <div class="pub-venue">Working paper, 2025</div>
+          <div class="pub-links">
+            <a href="#">PDF</a>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="pub-title">Separating Rate from Composition: A Zero-Loss Decomposition of Electoral Change</div>
+          <div class="pub-authors"><span class="me">Donald Moratz</span></div>
+          <div class="pub-venue">Working paper, 2025</div>
+          <div class="pub-links">
+            <a href="#">PDF</a>
+            <a href="#">Replication</a>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="pub-title">Tracking Civic Space in Developing Countries with a High-Quality Corpus of Domestic Media and Transformer Models</div>
+          <div class="pub-authors"><span class="me">Donald Moratz</span>, Jeremy Springman, Erik Wibbels, Fatih Serkant Adıgüzel, Mateo Villamizar Chaparro, Zung-Ru Lin, Diego Romero, Mahda Soltani, Hanling Su, &amp; Jitender Swami</div>
+          <div class="pub-venue">Working paper, 2025</div>
+          <div class="pub-links">
+            <a href="#">PDF</a>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="pub-title">Foreign Influence by Authoritarian Governments: Introducing New Data and Evidence</div>
+          <div class="pub-authors"><span class="me">Jeremy Springman, Fatih Serkant Adıgüzel, Mateo Villamizar Chaparro, Zung-Ru Lin, Donald Moratz, Diego Romero, &amp; Erik Wibbels</div>
+          <div class="pub-venue">Working paper, 2025</div>
+          <div class="pub-links">
+            <a href="#">PDF</a>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="pub-title">#DataForUkraine: Adapting Social Science Tools for Crisis Response</div>
+          <div class="pub-authors"><span class="me">Ernesto Calvo, Zung-Ru Lin, Donald Moratz, Olga Onuch, Graeme Robertson, Jeremy Springman, &amp; Erik Wibbels</div>
+          <div class="pub-venue">Working paper, 2022</div>
+          <div class="pub-links">
+            <a href="#">PDF</a>
+          </div>
+        </article>
+
+        <div class="subsection-label">Policy Reports</div>
+
+        <article class="pub">
+          <div class="pub-title">Violence Against Journalists and Reporting on Civic Space</div>
+          <div class="pub-authors"><span class="me">Donald Moratz</span> &amp; Erik Wibbels</div>
+          <div class="pub-venue">DEVLAB@Duke, 2023</div>
+        </article>
+
+        <article class="pub">
+          <div class="pub-title">Technical Report on the Production of Civic Space and RAI Event Count Data</div>
+          <div class="pub-authors"><span class="me">Donald Moratz</span>, Jeremy Springman, &amp; Erik Wibbels</div>
+          <div class="pub-venue">DEVLAB@Duke, 2021</div>
+        </article>
+
+        <article class="pub">
+          <div class="pub-title">Legal Changes and Protest: Evidence from High-Frequency Data</div>
+          <div class="pub-authors"><span class="me">Donald Moratz</span>, Jeremy Springman, &amp; Erik Wibbels</div>
+          <div class="pub-venue">DEVLAB@Duke, 2021</div>
+        </article>
+
+        <article class="pub">
+          <div class="pub-title">What Predicts Changes in Civic Space? Evidence from Forecasts in Serbia</div>
+          <div class="pub-authors"><span class="me">Donald Moratz</span>, Jeremy Springman, &amp; Erik Wibbels</div>
+          <div class="pub-venue">DEVLAB@Duke, 2021</div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         TEACHING
+         ═══════════════════════════════════════════ -->
+    <section>
+      <span class="section-label">Teaching</span>
+      <div>
+        <h2 class="sr-only">Teaching</h2>
+        <div class="teaching">
+          <ul>
+            <li>
+              <span class="term">2026</span>
+              <span>STAT 5710 — Modern Data Mining</span>
+              <span class="role">Head Teaching Assistant</span>
+            </li>
+            <li>
+              <span class="term">2026</span>
+              <span>GAFL 5320 — IDev Policy Research Shop</span>
+              <span class="role">Teaching Assistant</span>
+            </li>
+            <li>
+              <span class="term">2025</span>
+              <span>Wharton Data Science Academy</span>
+              <span class="role">Teaching Fellow</span>
+            </li>
+            <li>
+              <span class="term">2025</span>
+              <span>PSCI 1408 — War, Strategy and Politics</span>
+              <span class="role">Teaching Assistant</span>
+            </li>
+            <li>
+              <span class="term">2023, 2025</span>
+              <span>PSCI 6800 — Advanced Statistical Analysis</span>
+              <span class="role">Teaching Assistant</span>
+            </li>
+            <li>
+              <span class="term">2023, 2025</span>
+              <span>Penn Political Science Ph.D. Math Camp</span>
+              <span class="role">Instructor</span>
+            </li>
+            <li>
+              <span class="term">2024</span>
+              <span>PSCI 1800 — Introduction to Data Science</span>
+              <span class="role">Teaching Assistant</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CONTACT
+         ═══════════════════════════════════════════ -->
+    <section>
+      <span class="section-label">Contact</span>
+      <div>
+        <h2 class="sr-only">Contact</h2>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <div class="label">Email</div>
+            <div class="value"><a href="mailto:dmoratz@sas.upenn.edu">dmoratz@sas.upenn.edu</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="label">Office</div>
+            <div class="value">PCPSE 448<br>University of Pennsylvania</div>
+          </div>
+          <div class="contact-item">
+            <div class="label">Mailing</div>
+            <div class="value">Department of Political Science<br>University of Pennsylvania<br>Philadelphia, PA 19104</div>
+          </div>
+          <div class="contact-item">
+            <div class="label">Elsewhere</div>
+            <div class="value">
+              <a href="https://github.com/dmoratz">GitHub</a> ·
+              <a href="https://www.linkedin.com/in/dmoratz/">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 Donald Moratz</span>
+      <span>Last updated <time datetime="2026-05-04">May 2026</time></span>
+    </footer>
+
+  </main>
+</body>
+</html>
